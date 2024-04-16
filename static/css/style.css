@@ -412,6 +412,9 @@
         -webkit-transform: scale(1.1);
         transform: scale(1.1);
     }
+    section, h1, h2{
+        text-align: center;
+    }
     /*About Section*/
     .about .about-content{ 
         -ms-flex: 0 0 100%;
