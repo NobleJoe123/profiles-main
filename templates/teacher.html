@@ -43,7 +43,7 @@
             <div class="card-one"><a href="{{ url_for('teacher') }}">
               <div class="contain">
               <h1>Teachers</h1>
-              <h2><p>10</p></h2>
+              <h2><p>{{ total_count }}</p></h2>
               </div>
               </a>
             </div>
@@ -51,7 +51,7 @@
             <div class="card-two"><a href="{{ url_for('student') }}">
               <div class="contain">
               <h1>Students</h1>
-              <h2><p>50</p></h2>
+              <h2><p>{{ total_count }}</p></h2>
               </div>
               </a>
             </div>
@@ -60,7 +60,7 @@
             <div class="card-three"><a href="{{ url_for('admin') }}">
               <div class="contain">
               <h1>Admin</h1>
-              <h2><p>2</p></h2>
+              <h2><p>{{ total_count }}</p></h2>
               </div>
               </a>
             </div>
