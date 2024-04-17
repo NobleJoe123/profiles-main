@@ -1243,7 +1243,7 @@ body.dark .shadow-dark{
   /*----------------------------------------------------*/
 
 table{
-    border: 1px #0dcaf0 solid;
+
     padding: 50px;
 
   }
@@ -1260,3 +1260,7 @@ table{
     /* border: 1px #0dcaf0 solid; */
 
   }
+
+.hidden {
+display: none;
+}

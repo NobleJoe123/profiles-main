@@ -25,7 +25,7 @@
                </div>
                <!--Nav-->
                <ul class="nav">
-                   <li><a href="{{ url_for('admin') }}" class="active"><i class="fa fa-user"></i>Admin</a></li>
+                   <li><a href="#home" class="active"><i class="fa fa-user"></i>Admin</a></li>
                    <li><a href="#about"><i class="fa fa-user"></i>Teacher</a></li>
                    <li><a href="#services"><i class="fa fa-user"></i>Student</a></li>
                    <li><a href="#portfolio"><i class="fa fa-user"></i>Non-Teaching</a></li>
@@ -40,7 +40,7 @@
            <!--Aside ends-->
 
            <section class="blog section">
-            <div class="card-one"><a href="{{ url_for('teachers') }}">
+            <div class="card-one"><a href="{{ url_for('teacher') }}">
               <div class="contain">
               <h1>Teachers</h1>
               <h2><p>10</p></h2>
@@ -48,19 +48,21 @@
               </a>
             </div>
 
-            <div class="card-two">
+            <div class="card-two"><a href="{{ url_for('student') }}">
               <div class="contain">
               <h1>Students</h1>
               <h2><p>50</p></h2>
               </div>
+              </a>
             </div>
 
             
-            <div class="card-three">
+            <div class="card-three"><a href="{{ url_for('admin') }}">
               <div class="contain">
               <h1>Admin</h1>
               <h2><p>2</p></h2>
               </div>
+              </a>
             </div>
 
                 <h1>Data from MySQL Database</h1>

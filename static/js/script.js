@@ -169,3 +169,8 @@ const filterContainer=document.querySelector(".portfolio-filter"),
                 allSection[i].classList.toggle("open");
         }
     }
+
+    function showTable(){
+        const table = documnet.getElementById('teacher');
+        table.classList.remove('hidden');
+      }

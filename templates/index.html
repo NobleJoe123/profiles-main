@@ -27,7 +27,7 @@
                <ul class="nav">
                    <li><a href="#home" class="active"><i class="fa fa-user"></i>Admin</a></li>
                    <li><a href="#about"><i class="fa fa-user"></i>Teacher</a></li>
-                   <li><a href="#services"><i class="fa fa-user"></i>Student</a></li>
+                   <li><a href="services"><i class="fa fa-user"></i>Student</a></li>
                    <li><a href="#portfolio"><i class="fa fa-user"></i>Non-Teaching</a></li>
                    <li><a href="#blog"><i class="fa fa-arrow"></i>File Download</a></li>
                    <li><a href="#contact"><i class="fa fa-arrow"></i>Upload File</a></li>
@@ -40,53 +40,39 @@
            <!--Aside ends-->
 
            <section class="blog section">
-            <div class="card-one"><a href="{{ url_for('teacher') }}">
-              <div class="contain">
-              <h1>Teachers</h1>
-              <h2><p>10</p></h2>
-              </div>
-              </a>
-            </div>
+                  <div class="card-one"><a href="{{ url_for('teacher')}}">
+                    <div class="contain">
+                    <h1>Teachers</h1>
+                    <h2><p>10</p></h2>
+                    </div>
+                    </a>
+                  </div>
 
-            <div class="card-two"><a href="{{ url_for('student') }}">
-              <div class="contain">
-              <h1>Students</h1>
-              <h2><p>50</p></h2>
-              </div>
-              </a>
-            </div>
+                  <div class="card-two"><a href="{{ url_for('student')}}">
+                    <div class="contain">
+                    <h1>Students</h1>
+                    <h2><p>50</p></h2>
+                    </div>
+                    </a>
+                  </div>
 
-            
-            <div class="card-three"><a href="{{ url_for('admin') }}">
-              <div class="contain">
-              <h1>Admin</h1>
-              <h2><p>2</p></h2>
-              </div>
-              </a>
-            </div>
-
-                <h1>Data from MySQL Database</h1>
-            <table>
-                <tr>
-                    <th>fullname</th>
-                    <th>username</th>
-                    <th>phone</th>
-                    <th>email</th>
-                    <th>password</th>
-                </tr>
-                {% for row in data %}
-                    <tr>
-                        <td>{{ row[0] }}</td>
-                        <td>{{ row[1] }}</td>
-                        <td>{{ row[2] }}</td>
-                        <td>{{ row[3] }}</td>
-                        <td>{{ row[4] }}</td>
-                    </tr>
-                {% endfor %}
-            </table>
-
+                  
+                  <div class="card-three"><a href="{{ url_for('admin')}}">
+                    <div class="contain">
+                    <h1>Admin</h1>
+                    <h2><p>2</p></h2>
+                    </div>
+                    </a>
+                  </div>
           </section>
 
+        <!-- <script>
+          function showTable() {
+            document.getElementById("teacher").innerHTML = "teacher";
+          }
+            </script> -->
+
+<!-- SIDEBAR NAVIGATION -->
           <div class="lightbox-caption">
             <div class="caption-text"></div>
             <div class="caption-counter"></div>
@@ -121,5 +107,6 @@
 
 <!-- styleSwitcher Javascript -->
 <script src="static/js/styleSwitcher.js"></script>
+
 </body>
 </html>

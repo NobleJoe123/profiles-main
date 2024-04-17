@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from flask_mysqldb import MySQL
 
 
@@ -14,17 +14,32 @@ app.config['MYSQL_DB'] = 'test'
 mysql = MySQL(app)
 
 @app.route('/')
-def admin():
-    return render_template('admin.html')
+def index():
+    return render_template('index.html')
 
-@app.route('/teachers')
-def teachers():
+@app.route('/admin')
+def admin():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM ecommerce")
+    data = cur.fetchall()
+    cur.close()
+    return render_template('admin.html', data=data)
+
+@app.route('/teacher')
+def teacher():
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM timed")
     data = cur.fetchall()
     cur.close()
     return render_template('teacher.html', data=data)
 
+@app.route('/student')
+def student():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM timed")
+    data = cur.fetchall()
+    cur.close()
+    return render_template('student.html', data=data)
 
 if '__main__' == __name__:
     app.run(debug=True)
