@@ -32,40 +32,28 @@ def admin():
     data = cur.fetchall()
     cur.execute("SELECT COUNT(*) FROM ecommerce")
     admin_count = cur.fetchone()[0]
-    cur.execute("SELECT COUNT(*) FROM timed")
-    student_count = cur.fetchone()[0]
-    cur.execute("SELECT COUNT(*) FROM timed")
-    teacher_count = cur.fetchone()[0]
     cur.close()
-    return render_template('admin.html', data=data, admin_count=admin_count, student_count=student_count, teacher_count=teacher_count)
+    return render_template('admin.html', data=data, admin_count=admin_count)
 
 @app.route('/teacher')
 def teacher():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM ecommerce")
+    cur.execute("SELECT * FROM timed")
     data = cur.fetchall()
-    cur.execute("SELECT COUNT(*) FROM ecommerce")
-    admin_count = cur.fetchone()[0]
-    cur.execute("SELECT COUNT(*) FROM timed")
-    student_count = cur.fetchone()[0]
     cur.execute("SELECT COUNT(*) FROM timed")
     teacher_count = cur.fetchone()[0]
     cur.close()
-    return render_template('teacher.html', data=data, admin_count=admin_count, student_count=student_count, teacher_count=teacher_count)
+    return render_template('teacher.html', data=data, teacher_count=teacher_count)
 
 @app.route('/student')
 def student():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM ecommerce")
+    cur.execute("SELECT * FROM timed")
     data = cur.fetchall()
-    cur.execute("SELECT COUNT(*) FROM ecommerce")
-    admin_count = cur.fetchone()[0]
     cur.execute("SELECT COUNT(*) FROM timed")
     student_count = cur.fetchone()[0]
-    cur.execute("SELECT COUNT(*) FROM timed")
-    teacher_count = cur.fetchone()[0]
     cur.close()
-    return render_template('student.html', data=data, admin_count=admin_count, student_count=student_count, teacher_count=teacher_count)
+    return render_template('student.html', data=data, student_count=student_count)
 
 if '__main__' == __name__:
     app.run(debug=True)
