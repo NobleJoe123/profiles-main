@@ -1,5 +1,6 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
 from flask_mysqldb import MySQL
+import os
 
 
 app = Flask(__name__)
@@ -54,6 +55,19 @@ def student():
     student_count = cur.fetchone()[0]
     cur.close()
     return render_template('student.html', data=data, student_count=student_count)
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    if 'file' in request.files:
+        file = request.files['file']
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file,filename)
+            return 'file uploaded seccessfully'
+        return 'File upload failed'
+    return render_template('upload-file.html')
+    
+def allowed_file(filename):
+    return'.' in filename and filename.rsplict('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 if '__main__' == __name__:
     app.run(debug=True)
