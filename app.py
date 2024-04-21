@@ -64,7 +64,7 @@ def upload():
             filename = secure_filename(file,filename)
             return 'file uploaded seccessfully'
         return 'File upload failed'
-    return render_template('upload-file.html')
+    return render_template('file-upload.html')
     
 def allowed_file(filename):
     return'.' in filename and filename.rsplict('.', 1)[1].lower() in ALLOWED_EXTENSIONS
