@@ -1,6 +1,7 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, jsonify
 from flask_mysqldb import MySQL
 import os
+import openpyxl
 
 
 app = Flask(__name__)
@@ -58,16 +59,42 @@ def student():
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    if 'file' in request.files:
-        file = request.files['file']
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file,filename)
-            return 'file uploaded seccessfully'
-        return 'File upload failed'
-    return render_template('file-upload.html')
+    file = request.files['file']
+    wb = openpyxl.load_workbook(file)
+    sheet = wb.active
+    cursor = mysql.connection.cursor()
+    for row in sheet.ilter_rows(values_only=True):
+        cursor.execute("INSERT INTO timed (username, email,password) VALUES(%s,%s,%s)",row)
+        mysql.connection.commit()
+        return jsonify({'message': 'Data Uploaded Successfully'})
+    return render_template('upload.html')
     
-def allowed_file(filename):
-    return'.' in filename and filename.rsplict('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+# @app.route('/', methods=['GET', 'POST'])
+# def upload():
+#     if request.method == 'POST':
+#         file = request.files['file']
+
+#         upload=upload(filename=file.filename, data=file.read())
+#         db.session.add(upload)
+#         db.session.commit()
+
+#         return f'Uplaodded: {file.filename}'
+#     return render_template('file_upload.html')
+
+# @app.route('/upload', methods=['POST'])
+# def file_upload():
+#     if 'file' in request.files:
+#         file = request.files['file']
+#         if file and allowed_file(file.filename):
+#             filename = secure_filename(file,filename)
+#             return 'file uploaded seccessfully'
+#         return 'File upload failed'
+#     return render_template('upload-file.html')
+    
+# def allowed_file(filename):
+#     return'.' in filename and filename.rsplict('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 if '__main__' == __name__:
     app.run(debug=True)

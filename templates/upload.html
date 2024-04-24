@@ -38,51 +38,13 @@
                </div>
            </div>
            <!--Aside ends-->
-          <div class="main-content">
-           <section class="blog section" id="home">
-            <div class="container">
-                  <div class="card-one"><a href="{{ url_for('teacher')}}">
-                    <div class="contain">
-                    <h1>Teachers</h1>
-                    <h2><p>{{ teacher_count }}</p></h2>
-                    </div>
-                    </a>
-                  </div>
-
-                  <div class="card-two"><a href="{{ url_for('student')}}">
-                    <div class="contain">
-                    <h1>Students</h1>
-                    <h2><p>{{ student_count }}</p></h2>
-                    </div>
-                    </a>
-                  </div>
-
-                  
-                  <div class="card-three"><a href="{{ url_for('admin')}}">
-                    <div class="contain">
-                    <h1>Admin</h1>
-                    <h2><p>{{ admin_count }}</p></h2>
-                    </div>
-                    </a>
-                  </div>
-
-                  
-                <h1>Data from MySQL Database</h1>
-                <table>
-                    <tr>
-                        <th>username</th>
-                        <th>email</th>
-                        <th>password</th>
-                    </tr>
-                    {% for row in data %}
-                        <tr>
-                            <td>{{ row[0] }}</td>
-                            <td>{{ row[1] }}</td>
-                            <td>{{ row[2] }}</td>
-                        </tr>
-                    {% endfor %}
-                </table>
-              </div>
+        <div class="main-content">
+           <section class="home section active" id="home">
+            <h1>Upload file</h1>
+            <form method="POST" encrypt="multipart/form-data" action="/upload">
+                <input type="file" name="file">
+                <input type="submit" value="Upload">
+            </form>
           </section>
         </div>
         <!-- <script>
