@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request, jsonify
 from flask_mysqldb import MySQL
+import pandas as pd
 import os
 import openpyxl
 
@@ -15,19 +16,11 @@ app.config['MYSQL_DB'] = 'test'
 
 mysql = MySQL(app)
 
-# @app.route('/')
-# def index():
-#     cur = mysql.connection.cursor()
-#     cur.execute("SELECT * FROM ecommerce timed")
-#     data = cur.fetchall()
-#     cur.execute("SELECT COUNT(*) FROM ecommerce timed")
-#     admin_count = cur.fetchone()[0]
-#     teacher_count = cur.fetchone()[0]
-#     student_count = cur.fetchone()[0]
-#     cur.close()
-#     return render_template('index.html', data=data, admin_count=admin_count, teacher_count=teacher_count, student_count=student_count)
-
 @app.route('/')
+def index():
+    return render_template('admin.html')
+
+@app.route('/admin')
 def admin():
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM ecommerce")
@@ -57,17 +50,30 @@ def student():
     cur.close()
     return render_template('student.html', data=data, student_count=student_count)
 
-@app.route('/upload', methods=['POST'])
+@app.route('/upload')
 def upload():
-    file = request.files['file']
-    wb = openpyxl.load_workbook(file)
-    sheet = wb.active
-    cursor = mysql.connection.cursor()
-    for row in sheet.filter_rows(values_only=True):
-        cursor.execute("INSERT INTO ecommerce (username, email,password) VALUES(%s,%s,%s)",row)
-        mysql.connection.commit()
-        return jsonify({'message': 'Data Uploaded Successfully'})
     return render_template('upload.html')
+
+# @app.route('/view', methods=['POST'])
+# def view():
+#     file = request.files['file']
+#     file.save(file.filename)
+#     data = pd.read_excel(file)
+#     return data.to_html()
+
+
+@app.route('/view', methods=['GET','POST'])
+def view():
+    if request.method==['POST']:
+        file = request.file['file']
+        wb = openpyxl.load_workbook(file)
+        sheet = wb.active
+        cursor = mysql.connection.cursor()
+        for row in sheet.filter_rows(values_only=True):
+            cursor.execute("INSERT INTO ecommerce (username, email,password) VALUES(%s,%s,%s)",row)
+            mysql.connection.commit()
+            return jsonify({'message': 'Data Uploaded Successfully'})
+        return render_template('upload.html')
     
 
 
