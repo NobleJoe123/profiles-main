@@ -63,8 +63,8 @@ def upload():
     wb = openpyxl.load_workbook(file)
     sheet = wb.active
     cursor = mysql.connection.cursor()
-    for row in sheet.ilter_rows(values_only=True):
-        cursor.execute("INSERT INTO timed (username, email,password) VALUES(%s,%s,%s)",row)
+    for row in sheet.filter_rows(values_only=True):
+        cursor.execute("INSERT INTO ecommerce (username, email,password) VALUES(%s,%s,%s)",row)
         mysql.connection.commit()
         return jsonify({'message': 'Data Uploaded Successfully'})
     return render_template('upload.html')
