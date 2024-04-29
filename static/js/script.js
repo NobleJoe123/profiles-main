@@ -174,3 +174,11 @@ const filterContainer=document.querySelector(".portfolio-filter"),
         const table = documnet.getElementById('teacher');
         table.classList.remove('hidden');
       }
+
+
+
+function displayContent() {
+        // Fetch data or generate content dynamically
+    const dynamicContent = "This is the content to display."
+    const contentContainer = document.getElementById('fileupload')
+}

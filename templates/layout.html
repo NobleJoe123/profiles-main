@@ -2,7 +2,7 @@
 <html lang="en">
 <html>
     <head> 
-        <title>Personal Profile Page</title>
+        <title>Dash Board</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="static/css/style.css" type="text/css">
@@ -48,7 +48,8 @@
                   <li><a href="{{ url_for('student') }}"><i class="fa fa-user"></i>Student</a></li>
                   <li><a href="#portfolio"><i class="fa fa-user"></i>Non-Teaching</a></li>
                   <li><a href="#blog"><i class="fa fa-arrow"></i>File Download</a></li>
-                  <li><a href="{{ url_for('upload') }}"><i class="fa fa-arrow"></i>Upload File</a></li>
+                  <button id="testing">Upload File</button>
+                  
                </ul>
                <!--Copyright-->
                <div class="copyright-text" style="color: #0dcaf0;">
@@ -86,7 +87,27 @@
                   </a>
                 </div>
                 <div class="container">
-          
+                  <h1>Data from MySQL Database</h1>
+                  <table>
+                      <tr>
+                          <th>fullname</th>
+                          <th>username</th>
+                          <th>phone</th>
+                          <th>email</th>
+                          <th>password</th>
+                      </tr>
+                      {% for row in data %}
+                          <tr>
+                              <td>{{ row[0] }}</td>
+                              <td>{{ row[1] }}</td>
+                              <td>{{ row[2] }}</td>
+                              <td>{{ row[3] }}</td>
+                              <td>{{ row[4] }}</td>
+                          </tr>
+                      {% endfor %}
+                  </table>
+
+                  <div id="fileuplaod"></div>
                     <div class="intro">
                       
                     </div>
