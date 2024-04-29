@@ -48,7 +48,7 @@
         min-height: 100vh;
         display: block;
         padding: 0 30px;
-        position: fixed;
+        position: absolute;
         left: 270px;
         top: 0px;
         right: 0;
@@ -344,6 +344,7 @@
     .aside .nav{
         list-style: none;
         margin: 60px 0;
+        margin-top: 0;
         padding:0;
     }
 
@@ -375,6 +376,7 @@
     .aside .copyright-text{
     font-size: 13px;
     color: #7d7d7d;
+    margin-top: 0;
 
     }
 

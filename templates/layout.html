@@ -48,7 +48,7 @@
                   <li><a href="{{ url_for('student') }}"><i class="fa fa-user"></i>Student</a></li>
                   <li><a href="#portfolio"><i class="fa fa-user"></i>Non-Teaching</a></li>
                   <li><a href="#blog"><i class="fa fa-arrow"></i>File Download</a></li>
-                  <button id="testing">Upload File</button>
+                  <li><a href="#blog"><i class="fa fa-arrow"></i>File Upload</a></li>
                   
                </ul>
                <!--Copyright-->
@@ -63,7 +63,7 @@
            <div class="main-content">
                <!--Home Section-->
                <section class="home section active" id="home">
-                <div class="card-one"><a href="#">
+                <div class="card-one" onclick="myFunction"><a href="#">
                   <div class="contain">
                   <h1>Teachers</h1>
                   <h2><p>{{ teacher_count }}</p></h2>
@@ -88,7 +88,7 @@
                 </div>
                 <div class="container">
                   <h1>Data from MySQL Database</h1>
-                  <table>
+                  <table is="table">
                       <tr>
                           <th>fullname</th>
                           <th>username</th>

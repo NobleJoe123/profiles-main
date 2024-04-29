@@ -182,3 +182,7 @@ function displayContent() {
     const dynamicContent = "This is the content to display."
     const contentContainer = document.getElementById('fileupload')
 }
+
+function myFunction(){
+    document.getElementById("table").innerHTML()
+}
