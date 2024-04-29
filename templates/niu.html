@@ -133,5 +133,26 @@
 <!-- styleSwitcher Javascript -->
 <script src="static/js/styleSwitcher.js"></script>
 
+<div class="container">
+  <h1>Data from MySQL Database</h1>
+  <table is="table">
+      <tr>
+          <th>fullname</th>
+          <th>username</th>
+          <th>phone</th>
+          <th>email</th>
+          <th>password</th>
+      </tr>
+      {% for row in data %}
+          <tr>
+              <td>{{ row[0] }}</td>
+              <td>{{ row[1] }}</td>
+              <td>{{ row[2] }}</td>
+              <td>{{ row[3] }}</td>
+              <td>{{ row[4] }}</td>
+          </tr>
+      {% endfor %}
+  </table>
+
 </body>
 </html>

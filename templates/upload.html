@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <div id="fileupload">
+{% extends "base.html" %}
+{% block content %}
+
+<div id="fileupload">
   <h1>Upload file</h1>
   <form method="POST" encrypt="multipart/form-data" action="/upload">
       <input type="file" name="file">
       <input type="submit" value="Upload">
   </form>
   </div>
-</body>
-</html>
+
+  {% endblock %}

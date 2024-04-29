@@ -17,9 +17,6 @@ app.config['MYSQL_DB'] = 'test'
 mysql = MySQL(app)
 
 @app.route('/')
-def index():
-    return render_template('admin.html')
-
 @app.route('/admin')
 def admin():
     cur = mysql.connection.cursor()
@@ -51,29 +48,33 @@ def student():
     return render_template('student.html', data=data, student_count=student_count)
 
 @app.route('/upload')
-def upload():
+def                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 upload():
     return render_template('upload.html')
 
-# @app.route('/view', methods=['POST'])
+# @app.route('/upload')
+# def upload():
+#     return render_template('upload.html')
+
+# # @app.route('/view', methods=['POST'])
+# # def view():
+# #     file = request.files['file']
+# #     file.save(file.filename)
+# #     data = pd.read_excel(file)
+# #     return data.to_html()
+
+
+# @app.route('/view', methods=['GET','POST'])
 # def view():
-#     file = request.files['file']
-#     file.save(file.filename)
-#     data = pd.read_excel(file)
-#     return data.to_html()
-
-
-@app.route('/view', methods=['GET','POST'])
-def view():
-    if request.method==['POST']:
-        file = request.file['file']
-        wb = openpyxl.load_workbook(file)
-        sheet = wb.active
-        cursor = mysql.connection.cursor()
-        for row in sheet.filter_rows(values_only=True):
-            cursor.execute("INSERT INTO ecommerce (username, email,password) VALUES(%s,%s,%s)",row)
-            mysql.connection.commit()
-            return jsonify({'message': 'Data Uploaded Successfully'})
-        return render_template('upload.html')
+#     if request.method==['POST']:
+#         file = request.file['file']
+#         wb = openpyxl.load_workbook(file)
+#         sheet = wb.active
+#         cursor = mysql.connection.cursor()
+#         for row in sheet.filter_rows(values_only=True):
+#             cursor.execute("INSERT INTO ecommerce (username, email,password) VALUES(%s,%s,%s)",row)
+#             mysql.connection.commit()
+#             return jsonify({'message': 'Data Uploaded Successfully'})
+#         return render_template('upload.html')
     
 
 

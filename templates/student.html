@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "base.html" %}
 
 {% block content %}
     <h1>Data from MySQL Database</h1>
@@ -10,7 +10,7 @@
             <th>email</th>
             <th>password</th>
         </tr>
-        
+
         {% for row in data %}
             <tr>
                 <td>{{ row[0] }}</td>
