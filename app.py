@@ -20,7 +20,7 @@ mysql = MySQL(app)
 @app.route('/admin')
 def admin():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM ecommerce")
+    cur.execute("SELECT username, phone, email FROM ecommerce")
     data = cur.fetchall()
     cur.execute("SELECT COUNT(*) FROM ecommerce")
     admin_count = cur.fetchone()[0]
@@ -30,7 +30,7 @@ def admin():
 @app.route('/teacher')
 def teacher():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM timed")
+    cur.execute("SELECT  username, phone, email FROM timed")
     data = cur.fetchall()
     cur.execute("SELECT COUNT(*) FROM timed")
     teacher_count = cur.fetchone()[0]
@@ -40,7 +40,7 @@ def teacher():
 @app.route('/student')
 def student():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM timed")
+    cur.execute("SELECT username, phone, email FROM timed")
     data = cur.fetchall()
     cur.execute("SELECT COUNT(*) FROM timed")
     student_count = cur.fetchone()[0]
@@ -48,7 +48,7 @@ def student():
     return render_template('student.html', data=data, student_count=student_count)
 
 @app.route('/upload')
-def                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 upload():
+def upload():
     return render_template('upload.html')
 
 # @app.route('/upload')
