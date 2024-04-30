@@ -51,6 +51,24 @@ def student():
 def upload():
     return render_template('upload.html')
 
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    if request.method == "POST":
+        # Connect to your MySQL database (or any other database)
+        cur = mysql.connection.cursor()
+        # Execute the search query
+        cur.execute('''SELECT * FROM timed WHERE username = %s''', request.form['search'])
+
+        # Process the results (you can print or return them)
+        for r in cur.fetchall():
+            print(r[0], r[1], r[2])
+
+        # Redirect back to the search page
+        return redirect(url_for('search'))
+
+    # Render the search form
+ 
+
 # @app.route('/upload')
 # def upload():
 #     return render_template('upload.html')

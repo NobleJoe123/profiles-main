@@ -55,18 +55,16 @@
                <div class="copyright-text" style="color: #0dcaf0;">
                     &copy; @Jascube Technologies 
                </div>
-
            <!--Aside ends-->
-
-
+           
            <!--Main content-->
-           <!-- <div class="main-content"> -->
+           <div class="main-content"> 
                <!--Home Section-->
                <section class="home section active" id="home">
-                <div class="card-one" onclick="myFunction"><a href="#">
+                <div class="card-one"><a href="#">
                   <div class="contain">
                   <h1>Teachers</h1>
-                  <h2><p>{{ teacher_count }}</p></h2>
+                  <h2>{{ teacher_count }}</h2>
                   </div>
                   </a>
                 </div>
@@ -86,38 +84,28 @@
                   </div>
                   </a>
                 </div>
-<!-- {% for row in data %}
-<ul>
-{{row[0]}} {{row[1]}} {{row[2]}} {{row[3]}} {{row[4]}}
-</ul>
-{% endfor %} -->
-                
-                <!-- <h1>Data from MySQL Database</h1>--->
-                <table>
-                    <tr>
-                        <th>username</th>
-                        <th>phone</th>
-                        <th>email</th>
 
-                    </tr>
-            
-                    {% for row in data %}
-                        <tr>
-                            <td>{{ row[0] }}</td>
-                            <td>{{ row[1] }}</td>
-                            <td>{{ row[2] }}</td>
-                        </tr>
-                    {% endfor %}
-            
+                <div class="search">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                </div>
+
+                <table id="myTable">
+                  <tr class="header">
+                    <th style="width:60%;">username</th>
+                    <th style="width:40%;">phone</th>
+                    <th style="width:40%;">email</th>
+                  </tr>
+                  {% for row in data %}
+                  <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                  </tr>
+                  {% endfor %}
                 </table>
-            <!--Contact Section ends-->
-            
+               </section>
+              </div>
            </div>
-
-
-           <!--Main content ends-->
-       <!-- </div> -->
-       <!--main-container ends-->
 
 <!-- Lightbox begins-->
 <div class="lightbox">
