@@ -20,7 +20,7 @@ mysql = MySQL(app)
 @app.route('/admin')
 def admin():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT username, phone, email FROM ecommerce")
+    cur.execute("SELECT * FROM ecommerce")
     data = cur.fetchall()
     cur.execute("SELECT COUNT(*) FROM ecommerce")
     admin_count = cur.fetchone()[0]
@@ -47,24 +47,45 @@ def student():
     cur.close()
     return render_template('student.html', data=data, student_count=student_count)
 
-@app.route('/upload')
-def upload():
-    return render_template('upload.html')
-
-@app.route('/search', methods=['GET', 'POST'])
+@app.route('/search', methods=['GET'])
 def search():
-    if request.method == "POST":
-        # Connect to your MySQL database (or any other database)
-        cur = mysql.connection.cursor()
-        # Execute the search query
-        cur.execute('''SELECT * FROM timed WHERE username = %s''', request.form['search'])
+    query = request.args.get('query')
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM timed WHERE username LIKE %s", ('%' + query + '%',))
+    results = cur.fetchall()
+    return render_template('student.html', results=results)
 
-        # Process the results (you can print or return them)
-        for r in cur.fetchall():
-            print(r[0], r[1], r[2])
+@app.route('/upload', methods=['GET'])
+def upload():
+    return render_template('upload.html',)
 
-        # Redirect back to the search page
-        return redirect(url_for('search'))
+# @app.route('/search', methods=['GET', 'POST'])
+# def search():
+#   if request.method == 'POST':
+#     search_term = request.form['search']
+#     cur = mysql.connection.cursor()
+#     query = "SELECT * FROM timed WHERE username = %s"
+#     cur.execute(query, ('%' + search_term + '%',))
+#     results = cur.fetchall()
+#     cur.close()
+#     return render_template('admin.html', results=results)
+#   return render_template('search.html')
+
+# @app.route('/search', methods=['GET', 'POST'])
+# def search():
+#     if request.method == "POST":
+#         # Connect to your MySQL database (or any other database)
+#         cur = mysql.connection.cursor()
+#         # Execute the search query
+#         cur.execute('''SELECT * FROM timed WHERE username = %s''', request.form['search'])
+
+#         # Process the results (you can print or return them)
+#         for r in cur.fetchall():
+#             print(r[0], r[1], r[2])
+
+#         # Redirect back to the search page
+#         return redirect(url_for('search'))
+#     return render_template('search.html')
 
     # Render the search form
  
