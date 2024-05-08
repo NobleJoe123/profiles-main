@@ -27,7 +27,6 @@
         </div>
      </div>
 
-
        <!--main-container-->  
        <div class="main-container">
           <!--Aside begins-->
@@ -66,8 +65,8 @@
                   <h1>Teachers</h1>
                   <h2>{{ teacher_count }}</h2>
                   </div>
-                  </a>
-                </div>
+                  </a>   
+                 </div>
             
                 <div class="card-two"><a href="#">
                   <div class="contain">
@@ -88,40 +87,20 @@
                 <div class="search">
                 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
                 </div>
-                <form action="/search" method="GET">
-                  <input type="text" name="query" placeholder="Search...">
-                  <input type="submit" value="Search">
-                </form>
-                <ul>
-                  {% for row in results %}
-                  <li>{{ row[0] }}
-                    {{ row[1] }}
-                  </li>
-                  {% endfor %}
-                </ul>
-
-
-                <!-- {% if results %}
-                <ul>
-                  {% for result in results %}
-                    <li>{{ result.your_desired_field }}</li>
-                  {% endfor %}
-                </ul>
-              {% else %}
-                <p>No results found.</p>
-              {% endif %} -->
 
                 <table id="myTable">
                   <tr class="header">
-                    <th style="width:60%;">username</th>
-                    <th style="width:40%;">phone</th>
-                    <th style="width:40%;">email</th>
+                    <th style="width:30%;">username</th>
+                    <th style="width:25%;">phone</th>
+                    <th style="width:25%;">email</th>
+                    <th style="width:20%;"></th>
                   </tr>
                   {% for row in data %}
                   <tr>
                     <td>{{ row[0] }}</td>
                     <td>{{ row[1] }}</td>
-                    <td>{{ row[2] }}</td>
+                    <td>{{ row[2] }}</a></td>
+                    <td style="font-size: medium;"><a  href="">View</a>   <a  href="">Modify</a></td>
                   </tr>
                   {% endfor %}
                 </table>

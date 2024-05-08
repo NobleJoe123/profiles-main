@@ -1277,7 +1277,7 @@ display: none;
     background-repeat: no-repeat; 
     width: 100%; 
     font-size: 16px;
-    padding: 12px 20px 12px 40px; 
+    padding: 12px 20px 12px 30px; 
     border: 1px solid #ddd; 
     margin-bottom: 12px; 
     margin-top: 2%;
@@ -1288,6 +1288,7 @@ display: none;
     width: 100%; 
     border: 1px solid #ddd; 
     font-size: 18px; 
+    background-color: whitesmoke;
   }
   
   #myTable th, #myTable td {
@@ -1307,3 +1308,4 @@ display: none;
   .section h1 h2{
     text-align: center;
   }
+
